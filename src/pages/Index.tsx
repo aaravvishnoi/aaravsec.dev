@@ -29,8 +29,8 @@ const Index = () => {
 
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button asChild size="lg" className="group">
-              <Link to="/portfolio">
-                View Portfolio
+              <Link to="/writeups">
+                View Writeups
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
