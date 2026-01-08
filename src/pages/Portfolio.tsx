@@ -1,53 +1,19 @@
 import Layout from "@/components/Layout";
-import ProjectCard from "@/components/ProjectCard";
+import { Construction } from "lucide-react";
 
 const Portfolio = () => {
-  const projects = [
-    {
-      title: "Login Bypass using SQL Injection",
-      description:
-        "Authentication bypass through unsanitized user input in login form, demonstrating complete access control failure and privilege escalation.",
-      tags: ["SQL Injection", "Auth Bypass", "Critical"],
-      link: "/portfolio/sql-injection-login-bypass",
-    },
-    {
-      title: "SQL Injection: Oracle Database Version Disclosure",
-      description:
-        "UNION-based SQL injection in category filter exposing Oracle database version and patch information through v$version enumeration.",
-      tags: ["SQL Injection", "UNION SELECT", "Oracle", "Info Disclosure"],
-      link: "/portfolio/sql-injection-oracle-version",
-    },
-    {
-      title: "SQL Injection: UNION-Based Enumeration on MS SQL Server",
-      description:
-        "Complete database enumeration via UNION-based SQL injection, extracting server version, schema structure, and sensitive user credentials from Microsoft SQL Server.",
-      tags: ["SQL Injection", "UNION SELECT", "MS SQL Server", "Critical", "Data Enumeration"],
-      link: "/portfolio/sql-injection-union-enumeration",
-    },
-    {
-      title: "Blind SQL Injection: Boolean-Based Credential Extraction",
-      description:
-        "Boolean-based blind SQL injection to extract administrator password character-by-character using conditional responses and Burp Intruder automation.",
-      tags: ["Blind SQL Injection", "Boolean-Based", "Credential Extraction", "Critical"],
-      link: "/portfolio/blind-sql-injection-boolean",
-    },
-  ];
-
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
-        <div className="mb-12">
+        <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
+          <div className="mb-6 rounded-full bg-primary/10 p-6">
+            <Construction className="h-16 w-16 text-primary" />
+          </div>
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Portfolio</h1>
-          <p className="text-lg text-muted-foreground">
-            Major red team projects and security assessments demonstrating methodology, technical
-            depth, and documentation discipline.
+          <p className="mb-2 text-xl text-muted-foreground">Coming Soon</p>
+          <p className="max-w-md text-muted-foreground">
+            Major red team projects and comprehensive security assessments are currently being documented. Check back soon for detailed case studies.
           </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
         </div>
       </div>
     </Layout>

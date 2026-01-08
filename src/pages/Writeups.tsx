@@ -1,49 +1,35 @@
 import Layout from "@/components/Layout";
-import WriteupCard from "@/components/WriteupCard";
+import ProjectCard from "@/components/ProjectCard";
 
 const Writeups = () => {
   const writeups = [
     {
-      title: "HTB: Machine Enumeration & Initial Access",
+      title: "Login Bypass using SQL Injection",
       description:
-        "Detailed walkthrough of reconnaissance methodology and exploiting web vulnerabilities to gain initial foothold.",
-      category: "HTB Machine",
-      link: "/writeups/htb-machine-1",
+        "Authentication bypass through unsanitized user input in login form, demonstrating complete access control failure and privilege escalation.",
+      tags: ["SQL Injection", "Auth Bypass", "Critical"],
+      link: "/portfolio/sql-injection-login-bypass",
     },
     {
-      title: "PortSwigger: Advanced XSS Exploitation",
+      title: "SQL Injection: Oracle Database Version Disclosure",
       description:
-        "Breaking down complex XSS scenarios including CSP bypasses and context-specific payload crafting.",
-      category: "PortSwigger Lab",
-      link: "/writeups/portswigger-xss",
+        "UNION-based SQL injection in category filter exposing Oracle database version and patch information through v$version enumeration.",
+      tags: ["SQL Injection", "UNION SELECT", "Oracle", "Info Disclosure"],
+      link: "/portfolio/sql-injection-oracle-version",
     },
     {
-      title: "API Security: BOLA to Account Takeover",
+      title: "SQL Injection: UNION-Based Enumeration on MS SQL Server",
       description:
-        "Step-by-step analysis of broken object level authorization leading to full account compromise.",
-      category: "API Attack",
-      link: "/writeups/api-bola",
+        "Complete database enumeration via UNION-based SQL injection, extracting server version, schema structure, and sensitive user credentials from Microsoft SQL Server.",
+      tags: ["SQL Injection", "UNION SELECT", "MS SQL Server", "Critical", "Data Enumeration"],
+      link: "/portfolio/sql-injection-union-enumeration",
     },
     {
-      title: "Understanding SSRF: Detection to Exploitation",
+      title: "Blind SQL Injection: Boolean-Based Credential Extraction",
       description:
-        "Technical deep dive into Server-Side Request Forgery vulnerabilities with practical exploitation examples.",
-      category: "Vulnerability Analysis",
-      link: "/writeups/ssrf-analysis",
-    },
-    {
-      title: "HTB: Privilege Escalation via Sudo Misconfiguration",
-      description:
-        "Exploiting sudo permissions and GTFOBins techniques to achieve root access.",
-      category: "HTB Machine",
-      link: "/writeups/htb-privesc",
-    },
-    {
-      title: "PortSwigger: SQL Injection Masterclass",
-      description:
-        "From basic SQLi to blind exploitation and automated data exfiltration techniques.",
-      category: "PortSwigger Lab",
-      link: "/writeups/portswigger-sqli",
+        "Boolean-based blind SQL injection to extract administrator password character-by-character using conditional responses and Burp Intruder automation.",
+      tags: ["Blind SQL Injection", "Boolean-Based", "Credential Extraction", "Critical"],
+      link: "/portfolio/blind-sql-injection-boolean",
     },
   ];
 
@@ -53,14 +39,14 @@ const Writeups = () => {
         <div className="mb-12">
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Writeups</h1>
           <p className="text-lg text-muted-foreground">
-            Detailed writeups covering HTB machines, PortSwigger labs, vulnerability research, and
+            Detailed writeups covering vulnerability research, PortSwigger labs, and
             offensive security techniques.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {writeups.map((writeup) => (
-            <WriteupCard key={writeup.title} {...writeup} />
+            <ProjectCard key={writeup.title} {...writeup} />
           ))}
         </div>
       </div>
