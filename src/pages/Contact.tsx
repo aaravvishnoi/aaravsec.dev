@@ -47,12 +47,12 @@ const Contact = () => {
               <div>
                 <h3 className="mb-1 font-semibold">LinkedIn</h3>
                 <a
-                  href="https://www.linkedin.com/in/aarav-vishnoi-51b921290"
+                  href="https://linkedin.com/in/aarav-vishnoi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-accent"
                 >
-                  linkedin.com/in/aarav-vishnoi-51b921290
+                  linkedin.com/in/aarav-vishnoi
                 </a>
               </div>
             </div>
