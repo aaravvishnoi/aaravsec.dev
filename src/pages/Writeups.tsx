@@ -31,6 +31,13 @@ const Writeups = () => {
       tags: ["Blind SQL Injection", "Boolean-Based", "Credential Extraction", "Critical"],
       link: "/portfolio/blind-sql-injection-boolean",
     },
+    {
+      title: "DOM XSS in jQuery Selector Sink Using hashchange Event",
+      description:
+        "JavaScript execution via malicious input injected into a jQuery selector through window.location.hash, enabling session theft and UI redressing attacks.",
+      tags: ["DOM XSS", "jQuery", "hashchange", "High"],
+      link: "/writeups/dom-xss-jquery-selector-sink",
+    },
   ];
 
   return (
