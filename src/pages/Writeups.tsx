@@ -38,6 +38,13 @@ const Writeups = () => {
       tags: ["DOM XSS", "jQuery", "hashchange", "High"],
       link: "/writeups/dom-xss-jquery-selector-sink",
     },
+    {
+      title: "DOM XSS in AngularJS Expression with HTML-Encoded Brackets",
+      description:
+        "JavaScript execution via malicious AngularJS expression injection through unsanitized user input in search functionality, bypassing HTML encoding.",
+      tags: ["DOM XSS", "AngularJS", "Expression Injection", "High"],
+      link: "/writeups/dom-xss-angularjs-expression",
+    },
   ];
 
   return (
