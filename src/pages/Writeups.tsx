@@ -45,6 +45,13 @@ const Writeups = () => {
       tags: ["DOM XSS", "AngularJS", "Expression Injection", "High"],
       link: "/writeups/dom-xss-angularjs-expression",
     },
+    {
+      title: "Reflected DOM XSS",
+      description:
+        "JavaScript execution via server-reflected data processed insecurely by client-side eval(), enabling session theft and credential harvesting.",
+      tags: ["DOM XSS", "Reflected", "eval() Sink", "High"],
+      link: "/writeups/reflected-dom-xss",
+    },
   ];
 
   return (

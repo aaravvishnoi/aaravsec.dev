@@ -16,6 +16,7 @@ import SqlInjectionUnionEnumeration from "./pages/projects/SqlInjectionUnionEnum
 import BlindSqlInjectionBoolean from "./pages/projects/BlindSqlInjectionBoolean";
 import DomXssJquerySelectorSink from "./pages/projects/DomXssJquerySelectorSink";
 import DomXssAngularJsExpression from "./pages/projects/DomXssAngularJsExpression";
+import ReflectedDomXss from "./pages/projects/ReflectedDomXss";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/portfolio/blind-sql-injection-boolean" element={<BlindSqlInjectionBoolean />} />
           <Route path="/writeups/dom-xss-jquery-selector-sink" element={<DomXssJquerySelectorSink />} />
           <Route path="/writeups/dom-xss-angularjs-expression" element={<DomXssAngularJsExpression />} />
+          <Route path="/writeups/reflected-dom-xss" element={<ReflectedDomXss />} />
           <Route path="/writeups" element={<Writeups />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/contact" element={<Contact />} />
