@@ -7,10 +7,10 @@ const SqlInjectionOracleVersion = () => {
   return (
     <Layout>
       <article className="container mx-auto px-4 py-16">
-        <Link to="/portfolio">
+        <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
-            Back to Portfolio
+            Back to Writeups
           </Button>
         </Link>
 
@@ -240,10 +240,10 @@ const SqlInjectionOracleVersion = () => {
         </div>
 
         <div className="mt-12 border-t border-operator-border pt-8">
-          <Link to="/portfolio">
+          <Link to="/writeups">
             <Button variant="outline" className="gap-2">
               <ArrowLeft className="h-4 w-4" />
-              Back to Portfolio
+              Back to Writeups
             </Button>
           </Link>
         </div>
