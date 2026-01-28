@@ -8,10 +8,10 @@ const SqlInjectionUnionEnumeration = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
-        <Link to="/portfolio">
+        <Link to="/writeups">
           <Button variant="ghost" className="mb-8 -ml-4 text-muted-foreground hover:text-accent">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Portfolio
+            Back to Writeups
           </Button>
         </Link>
 
