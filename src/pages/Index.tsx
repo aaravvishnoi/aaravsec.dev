@@ -29,11 +29,13 @@ const activityCards = [
 const Index = () => {
   return (
     <Layout>
-      <div className="container mx-auto px-4">
+      {/* Fixed full-screen dot grid background */}
+      <div className="pointer-events-none fixed inset-0 z-0 h-screen w-screen">
+        <DotGrid />
+      </div>
+      <div className="relative z-10 container mx-auto px-4">
         {/* Hero Section */}
         <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden py-20 text-center">
-          {/* Subtle dot grid background */}
-          <DotGrid />
 
           {/* Scan line */}
           <div className="scan-line pointer-events-none absolute left-0 right-0 h-[2px] bg-accent/10" />
