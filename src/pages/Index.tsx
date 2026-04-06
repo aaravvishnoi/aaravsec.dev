@@ -32,8 +32,6 @@ const Index = () => {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden py-20 text-center">
-          {/* Subtle dot grid background */}
-          <DotGrid />
 
           {/* Scan line */}
           <div className="scan-line pointer-events-none absolute left-0 right-0 h-[2px] bg-accent/10" />
