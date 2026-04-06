@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Github } from "lucide-react";
-import MatrixRain from "@/components/MatrixRain";
+import DotGrid from "@/components/DotGrid";
 import TypewriterText from "@/components/TypewriterText";
 
 const statBadges = [
@@ -11,14 +11,29 @@ const statBadges = [
   "Tools: Burp Suite, Nmap, Python",
 ];
 
+const activityCards = [
+  {
+    label: "Latest Writeup",
+    value: "Reflected DOM XSS via eval() sink in search functionality",
+  },
+  {
+    label: "Latest Project",
+    value: "Automated Vulnerability Scanner — Python, Nmap, Requests",
+  },
+  {
+    label: "Currently Learning",
+    value: "Advanced API exploitation and GraphQL injection techniques",
+  },
+];
+
 const Index = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden py-20 text-center">
-          {/* Matrix rain background */}
-          <MatrixRain />
+          {/* Subtle dot grid background */}
+          <DotGrid />
 
           {/* Scan line */}
           <div className="scan-line pointer-events-none absolute left-0 right-0 h-[2px] bg-accent/10" />
@@ -39,7 +54,7 @@ const Index = () => {
               />
             </p>
 
-            <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
+            <p className="mb-10 max-w-2xl text-lg text-muted-foreground">
               Breaking assumptions. Exposing weaknesses. Building resilience.
               <span className="ml-1 inline-block animate-pulse text-accent">▌</span>
             </p>
@@ -68,12 +83,34 @@ const Index = () => {
               {statBadges.map((badge) => (
                 <span
                   key={badge}
-                  className="rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 font-mono text-xs text-muted-foreground"
+                  className="rounded-full border border-accent/20 bg-accent/5 px-3.5 py-1.5 font-mono text-[13px] text-muted-foreground"
                 >
                   {badge}
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Red divider */}
+        <div className="mx-auto my-0 h-px w-full max-w-4xl bg-accent/20" />
+
+        {/* Recent Activity Cards */}
+        <section className="py-12">
+          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-3">
+            {activityCards.map((card) => (
+              <div
+                key={card.label}
+                className="rounded border border-border bg-card p-4 border-l-2 border-l-accent"
+              >
+                <p className="mb-1 font-mono text-xs uppercase tracking-wider text-accent">
+                  {card.label}
+                </p>
+                <p className="font-mono text-sm text-muted-foreground">
+                  {card.value}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
