@@ -2,45 +2,78 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Github } from "lucide-react";
+import MatrixRain from "@/components/MatrixRain";
+import TypewriterText from "@/components/TypewriterText";
+
+const statBadges = [
+  "PortSwigger Labs: Advanced",
+  "CTF: RITSEC 2026",
+  "Tools: Burp Suite, Nmap, Python",
+];
 
 const Index = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4">
         {/* Hero Section */}
-        <section className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-20 text-center">
-          <div className="mb-8 inline-block">
-            <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
-              <span className="text-foreground">Aarav Vishnoi</span>
-            </h1>
-            <div className="h-1 bg-accent"></div>
-          </div>
+        <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden py-20 text-center">
+          {/* Matrix rain background */}
+          <MatrixRain />
 
-          <p className="mb-6 text-xl text-muted-foreground sm:text-2xl">
-            Offensive Security | Red Teaming | Web & API Exploitation
-          </p>
+          {/* Scan line */}
+          <div className="scan-line pointer-events-none absolute left-0 right-0 h-[2px] bg-accent/10" />
 
-          <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
-            Breaking assumptions. Exposing weaknesses. Building resilience.
-          </p>
+          <div className="relative z-10">
+            <div className="mb-8 inline-block">
+              <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+                <span className="text-foreground">Aarav Vishnoi</span>
+              </h1>
+              <div className="divider-animate h-1 bg-accent"></div>
+            </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Button asChild size="lg" className="group">
-              <Link to="/writeups">
-                View Writeups
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a
-                href="https://github.com/aaravvishnoi"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                GitHub
-              </a>
-            </Button>
+            <p className="mb-6 text-xl text-muted-foreground sm:text-2xl">
+              <TypewriterText
+                text="Offensive Security | Red Teaming | Web & API Exploitation"
+                speed={35}
+                delay={800}
+              />
+            </p>
+
+            <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
+              Breaking assumptions. Exposing weaknesses. Building resilience.
+              <span className="ml-1 inline-block animate-pulse text-accent">▌</span>
+            </p>
+
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Button asChild size="lg" className="group">
+                <Link to="/writeups">
+                  View Writeups
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a
+                  href="https://github.com/aaravvishnoi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </a>
+              </Button>
+            </div>
+
+            {/* Stat badges */}
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {statBadges.map((badge) => (
+                <span
+                  key={badge}
+                  className="rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 font-mono text-xs text-muted-foreground"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 

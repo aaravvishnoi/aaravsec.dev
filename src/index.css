@@ -64,3 +64,30 @@ All colors MUST be HSL.
     @apply tracking-tight;
   }
 }
+
+/* Divider animate in from left */
+.divider-animate {
+  animation: divider-grow 0.8s ease-out forwards;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+@keyframes divider-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* CRT scan line */
+.scan-line {
+  animation: scan-move 8s linear infinite;
+}
+
+@keyframes scan-move {
+  0% {
+    top: -2px;
+  }
+  100% {
+    top: 100%;
+  }
+}
