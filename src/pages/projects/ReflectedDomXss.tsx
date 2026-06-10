@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Terminal, Shield, AlertTriangle, Eye, Code, Zap } from "lucide-react";
 
 const ReflectedDomXss = () => {
+  usePageMeta({ title: "Reflected DOM XSS", description: "JavaScript execution via server-reflected data processed insecurely by client-side eval()", path: "/writeups/reflected-dom-xss" });
+
   return (
     <Layout>
       <article className="container mx-auto px-4 py-16">
@@ -22,15 +25,9 @@ const ReflectedDomXss = () => {
             JavaScript execution via server-reflected data processed insecurely by client-side eval()
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              DOM XSS
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Reflected
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              eval() Sink
-            </span>
+            <span className="tag">DOM XSS</span>
+            <span className="tag">Reflected</span>
+            <span className="tag">eval() Sink</span>
             <span className="rounded border border-destructive/50 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive">
               High
             </span>

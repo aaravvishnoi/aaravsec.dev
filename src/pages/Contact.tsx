@@ -1,72 +1,56 @@
 import Layout from "@/components/Layout";
-import { Mail, Github, Linkedin, Key } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
+
+const EMAIL = "aaravvishnoi764@gmail.com";
+
+const channels = [
+  { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+  { icon: Github, label: "GitHub", value: "github.com/aaravvishnoi", href: "https://github.com/aaravvishnoi" },
+  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/aarav-vishnoi", href: "https://linkedin.com/in/aarav-vishnoi" },
+];
 
 const Contact = () => {
+  usePageMeta({
+    title: "Contact",
+    description: "Get in touch with Aarav Vishnoi about offensive security work, internships, or collaboration.",
+    path: "/contact",
+  });
+
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-6 py-16">
         <div className="mx-auto max-w-2xl">
-          <h1 className="mb-8 text-4xl font-bold tracking-tight">Contact</h1>
-
+          <p className="eyebrow mb-3">Get in touch</p>
+          <h1 className="mb-4 font-display text-4xl font-bold tracking-tight">Contact</h1>
           <p className="mb-12 text-lg text-muted-foreground">
-            For security-related opportunities or collaboration, reach out through the channels
-            below.
+            For security work, internships, or collaboration, email is best — the other
+            channels work too.
           </p>
 
-          <div className="space-y-6">
-            <div className="flex items-center gap-4 rounded-lg border border-operator-border bg-card p-6 transition-colors hover:border-accent/50">
-              <Mail className="h-6 w-6 flex-shrink-0 text-accent" />
-              <div>
-                <h3 className="mb-1 font-semibold">Email</h3>
-                <a
-                  href="mailto:contact@aaravsec.dev"
-                  className="text-sm text-muted-foreground hover:text-accent"
-                >
-                  aaravvishnoi764@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 rounded-lg border border-operator-border bg-card p-6 transition-colors hover:border-accent/50">
-              <Github className="h-6 w-6 flex-shrink-0 text-accent" />
-              <div>
-                <h3 className="mb-1 font-semibold">GitHub</h3>
-                <a
-                  href="https://github.com/aaravvishnoi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-accent"
-                >
-                  github.com/aaravvishnoi
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 rounded-lg border border-operator-border bg-card p-6 transition-colors hover:border-accent/50">
-              <Linkedin className="h-6 w-6 flex-shrink-0 text-accent" />
-              <div>
-                <h3 className="mb-1 font-semibold">LinkedIn</h3>
-                <a
-                  href="https://linkedin.com/in/aarav-vishnoi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-accent"
-                >
-                  linkedin.com/in/aarav-vishnoi
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 rounded-lg border border-operator-border bg-card p-6">
-              <Key className="mt-1 h-6 w-6 flex-shrink-0 text-accent" />
-            </div>
+          <div className="space-y-4">
+            {channels.map(({ icon: Icon, label, value, href }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="flex items-center gap-4 rounded-lg border border-border bg-card p-5 transition-colors hover:border-primary/40"
+              >
+                <Icon className="h-5 w-5 flex-shrink-0 text-primary" />
+                <div>
+                  <h2 className="font-display text-sm font-semibold">{label}</h2>
+                  <span className="font-mono text-sm text-muted-foreground">{value}</span>
+                </div>
+              </a>
+            ))}
           </div>
 
-          <div className="mt-12 rounded-lg border border-accent/20 bg-accent/5 p-6">
-            <h3 className="mb-2 font-semibold">Response Time</h3>
+          <div className="mt-10 rounded-lg border border-primary/25 bg-primary/[0.04] p-6">
+            <h2 className="mb-2 font-display font-semibold">Response time</h2>
             <p className="text-sm text-muted-foreground">
-              I typically respond to security-related inquiries within 24-48 hours. For urgent
-              matters or vulnerability disclosures, please indicate priority in the subject line.
+              I usually reply within a day or two. For anything time-sensitive, note the
+              priority in the subject line.
             </p>
           </div>
         </div>

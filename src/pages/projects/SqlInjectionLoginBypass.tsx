@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Terminal, Shield, AlertTriangle } from "lucide-react";
 
 const SqlInjectionLoginBypass = () => {
+  usePageMeta({ title: "Login Bypass using SQL Injection", description: "Authentication bypass through unsanitized user input leading to full application compromise", path: "/portfolio/sql-injection-login-bypass" });
+
   return (
     <Layout>
       <article className="container mx-auto px-4 py-16">
@@ -22,15 +25,9 @@ const SqlInjectionLoginBypass = () => {
             Authentication bypass through unsanitized user input leading to full application compromise
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              SQL Injection
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Auth Bypass
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Critical
-            </span>
+            <span className="tag">SQL Injection</span>
+            <span className="tag">Auth Bypass</span>
+            <span className="sev sev-critical">Critical</span>
           </div>
         </header>
 

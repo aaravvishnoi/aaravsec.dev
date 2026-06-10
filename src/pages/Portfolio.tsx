@@ -1,90 +1,78 @@
 import Layout from "@/components/Layout";
-import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Terminal, Shield, Network, FileText } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const projects = [
   {
     title: "Automated Vulnerability Scanner",
     description:
-      "A Python-based reconnaissance and vulnerability scanning tool built to automate the early stages of a penetration test. Given a target domain, the scanner runs port discovery via Nmap, identifies running services, performs DNS enumeration, tests credentials against common protocols, and analyses HTTP security headers for misconfigurations. Results are compiled into a structured HTML report.",
+      "A Python-based recon and scanning tool that automates the early stages of a pentest. Given a target domain it runs port discovery via Nmap, fingerprints services, enumerates DNS, tests credentials against common protocols, and analyses HTTP security headers — compiling the results into a structured HTML report.",
     stack: ["Python", "Nmap", "Requests"],
     features: [
-      { icon: Terminal, text: "Port scanning and service fingerprinting" },
+      { icon: Terminal, text: "Port scanning & service fingerprinting" },
       { icon: Network, text: "DNS enumeration" },
       { icon: Shield, text: "HTTP security header analysis" },
-      { icon: Terminal, text: "Credential testing against network services" },
-      { icon: FileText, text: "Automated HTML vulnerability report generation" },
+      { icon: Terminal, text: "Credential testing against services" },
+      { icon: FileText, text: "Automated HTML report generation" },
     ],
     github: "https://github.com/aaravvishnoi/vuln-scanner",
     architecture:
-      "Built across modular components including a port scanner, service detector, DNS enumerator, web scanner, credential tester, and report generator — reflecting a real-world recon workflow rather than a single-script approach.",
+      "Built as modular components — port scanner, service detector, DNS enumerator, web scanner, credential tester, and report generator — mirroring a real recon workflow rather than a single script.",
   },
 ];
 
 const Portfolio = () => {
+  usePageMeta({
+    title: "Tooling",
+    description: "Security tooling built by Aarav Vishnoi — including a modular Python vulnerability scanner.",
+    path: "/portfolio",
+  });
+
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="mb-2 text-4xl font-bold tracking-tight">Portfolio</h1>
-        <p className="mb-12 text-lg text-muted-foreground">
-          Major projects and tools built for offensive security workflows.
+      <div className="container mx-auto px-6 py-16">
+        <p className="eyebrow mb-3">Built tools</p>
+        <h1 className="mb-4 font-display text-4xl font-bold tracking-tight">Tooling</h1>
+        <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
+          Tools I&apos;ve built for offensive security workflows.
         </p>
 
-        <div className="space-y-10">
+        <div className="space-y-8">
           {projects.map((project) => (
-            <div
-              key={project.title}
-              className="rounded-lg border border-border bg-card p-8 transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5"
-            >
+            <article key={project.title} className="rounded-lg border border-border bg-card p-7 sm:p-8">
               <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
-                <h2 className="text-2xl font-semibold text-foreground">
-                  {project.title}
-                </h2>
+                <h2 className="font-display text-2xl font-semibold">{project.title}</h2>
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent/20"
+                  className="inline-flex items-center gap-2 rounded-md border border-primary/25 bg-primary/10 px-4 py-2 font-mono text-xs uppercase tracking-wider text-primary transition-colors hover:bg-primary/20"
                 >
                   <Github className="h-4 w-4" />
-                  View on GitHub
+                  Source
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </div>
 
-              <p className="mb-4 text-muted-foreground">{project.description}</p>
+              <p className="mb-4 leading-relaxed text-muted-foreground">{project.description}</p>
+              <p className="mb-6 text-sm italic leading-relaxed text-dim">{project.architecture}</p>
 
-              <p className="mb-6 text-sm italic text-muted-foreground">
-                {project.architecture}
-              </p>
-
-              <div className="mb-6 flex flex-wrap gap-2">
+              <div className="mb-6 flex flex-wrap gap-1.5">
                 {project.stack.map((tech) => (
-                  <Badge
-                    key={tech}
-                    variant="secondary"
-                    className="border border-accent/20 bg-accent/10 text-accent hover:bg-accent/20"
-                  >
-                    {tech}
-                  </Badge>
+                  <span key={tech} className="tag">{tech}</span>
                 ))}
               </div>
 
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Key Features
-              </h3>
+              <h3 className="eyebrow mb-3">Key features</h3>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {project.features.map((feature) => (
-                  <li
-                    key={feature.text}
-                    className="flex items-center gap-3 text-sm text-foreground"
-                  >
-                    <feature.icon className="h-4 w-4 shrink-0 text-accent" />
+                  <li key={feature.text} className="flex items-center gap-3 text-sm text-foreground">
+                    <feature.icon className="h-4 w-4 shrink-0 text-primary" />
                     {feature.text}
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
       </div>

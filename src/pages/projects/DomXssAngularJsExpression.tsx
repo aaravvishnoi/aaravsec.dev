@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Terminal, Shield, AlertTriangle, Eye, Code, Zap } from "lucide-react";
 
 const DomXssAngularJsExpression = () => {
+  usePageMeta({ title: "DOM XSS in AngularJS Expression with Angle Brackets and Double Quotes HTML-Encoded", description: "JavaScript execution via malicious AngularJS expression injection through unsanitized user input", path: "/writeups/dom-xss-angularjs-expression" });
+
   return (
     <Layout>
       <article className="container mx-auto px-4 py-16">
@@ -22,15 +25,9 @@ const DomXssAngularJsExpression = () => {
             JavaScript execution via malicious AngularJS expression injection through unsanitized user input
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              DOM XSS
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              AngularJS
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Expression Injection
-            </span>
+            <span className="tag">DOM XSS</span>
+            <span className="tag">AngularJS</span>
+            <span className="tag">Expression Injection</span>
             <span className="rounded border border-destructive/50 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive">
               High
             </span>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://aaravsec.dev/</loc></url>
+  <url><loc>https://aaravsec.dev/about</loc></url>
+  <url><loc>https://aaravsec.dev/portfolio</loc></url>
+  <url><loc>https://aaravsec.dev/writeups</loc></url>
+  <url><loc>https://aaravsec.dev/notes</loc></url>
+  <url><loc>https://aaravsec.dev/contact</loc></url>
+  <url><loc>https://aaravsec.dev/portfolio/sql-injection-login-bypass</loc></url>
+  <url><loc>https://aaravsec.dev/portfolio/sql-injection-oracle-version</loc></url>
+  <url><loc>https://aaravsec.dev/portfolio/sql-injection-union-enumeration</loc></url>
+  <url><loc>https://aaravsec.dev/portfolio/blind-sql-injection-boolean</loc></url>
+  <url><loc>https://aaravsec.dev/writeups/dom-xss-jquery-selector-sink</loc></url>
+  <url><loc>https://aaravsec.dev/writeups/dom-xss-angularjs-expression</loc></url>
+  <url><loc>https://aaravsec.dev/writeups/reflected-dom-xss</loc></url>
+</urlset>

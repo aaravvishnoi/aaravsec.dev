@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const SqlInjectionUnionEnumeration = () => {
+  usePageMeta({ title: "SQL Injection – UNION-Based Enumeration on Non-Oracle Databases", description: "UNION-based SQL injection enabling complete database enumeration on Microsoft SQL Server backend", path: "/portfolio/sql-injection-union-enumeration" });
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">

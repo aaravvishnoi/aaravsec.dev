@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Terminal, Shield, AlertTriangle, Eye, Database, Key } from "lucide-react";
 
 const BlindSqlInjectionBoolean = () => {
+  usePageMeta({ title: "Blind SQL Injection – Extracting Administrator Credentials", description: "Boolean-based blind SQL injection to extract admin password character-by-character via conditional responses", path: "/portfolio/blind-sql-injection-boolean" });
+
   return (
     <Layout>
       <article className="container mx-auto px-4 py-16">
@@ -22,15 +25,9 @@ const BlindSqlInjectionBoolean = () => {
             Boolean-based blind SQL injection to extract admin password character-by-character via conditional responses
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Blind SQL Injection
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Boolean-Based
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Credential Extraction
-            </span>
+            <span className="tag">Blind SQL Injection</span>
+            <span className="tag">Boolean-Based</span>
+            <span className="tag">Credential Extraction</span>
             <span className="rounded border border-destructive/50 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive">
               Critical
             </span>

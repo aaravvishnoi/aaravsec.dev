@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import {
   Accordion,
   AccordionContent,
@@ -7,11 +8,18 @@ import {
 } from "@/components/ui/accordion";
 
 const Notes = () => {
+  usePageMeta({
+    title: "Notes",
+    description: "Offensive security methodology, checklists, and technique notes by Aarav Vishnoi.",
+    path: "/notes",
+  });
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
         <div className="mb-12">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight">Notes</h1>
+          <p className="eyebrow mb-3">Methodology</p>
+          <h1 className="mb-4 font-display text-4xl font-bold tracking-tight">Notes</h1>
           <p className="text-lg text-muted-foreground">
             Structured documentation library covering offensive methodologies, checklists, and
             techniques.

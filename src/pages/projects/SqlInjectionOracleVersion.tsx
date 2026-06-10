@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Terminal, Shield, AlertTriangle, Database } from "lucide-react";
 
 const SqlInjectionOracleVersion = () => {
+  usePageMeta({ title: "SQL Injection Attack: Querying Database Type and Version on Oracle", description: "Category filter exploitation leading to Oracle database version disclosure through UNION-based SQL injection", path: "/portfolio/sql-injection-oracle-version" });
+
   return (
     <Layout>
       <article className="container mx-auto px-4 py-16">
@@ -22,21 +25,11 @@ const SqlInjectionOracleVersion = () => {
             Category filter exploitation leading to Oracle database version disclosure through UNION-based SQL injection
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              SQL Injection
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              UNION SELECT
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Oracle
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Info Disclosure
-            </span>
-            <span className="rounded border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              Critical
-            </span>
+            <span className="tag">SQL Injection</span>
+            <span className="tag">UNION SELECT</span>
+            <span className="tag">Oracle</span>
+            <span className="tag">Info Disclosure</span>
+            <span className="sev sev-critical">Critical</span>
           </div>
         </header>
 

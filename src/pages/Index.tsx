@@ -1,169 +1,142 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Github } from "lucide-react";
-import DotGrid from "@/components/DotGrid";
-import TypewriterText from "@/components/TypewriterText";
+import { ArrowRight, Github, Linkedin, ExternalLink } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
-const statBadges = [
-  "PortSwigger Labs: Advanced",
-  "CTF: RITSEC 2026",
-  "Tools: Burp Suite, Nmap, Python",
+const ledger = [
+  { id: "AV-007", sev: "high", title: "Reflected DOM XSS via eval() sink", date: "2026-05" },
+  { id: "AV-004", sev: "critical", title: "Boolean-based blind SQLi credential extraction", date: "2026-04" },
+  { id: "AV-001", sev: "critical", title: "Authentication bypass via SQL injection", date: "2026-03" },
 ];
 
-const activityCards = [
+const profiles = [
+  { label: "GitHub", href: "https://github.com/aaravvishnoi", icon: Github },
+  { label: "LinkedIn", href: "https://linkedin.com/in/aarav-vishnoi", icon: Linkedin },
+];
+
+const capabilities = [
   {
-    label: "Latest Writeup",
-    value: "Reflected DOM XSS via eval() sink in search functionality",
+    k: "Web exploitation",
+    v: "Authentication bypasses, injection flaws, and client-side vulnerabilities — the focus of my current lab work.",
   },
   {
-    label: "Latest Project",
-    value: "Automated Vulnerability Scanner — Python, Nmap, Requests",
+    k: "Methodology & notes",
+    v: "Systematic enumeration and Burp-driven testing, documented step by step so the work is repeatable.",
   },
   {
-    label: "Currently Learning",
-    value: "Advanced API exploitation and GraphQL injection techniques",
+    k: "Tooling & scripting",
+    v: "Python and Bash automation for recon and reporting — turning manual checks into reusable scripts.",
   },
 ];
 
 const Index = () => {
+  usePageMeta({
+    title: "",
+    description:
+      "Aarav Vishnoi — an offensive security practitioner documenting web exploitation findings, lab writeups, and tooling.",
+    path: "/",
+  });
+
   return (
     <Layout>
-      {/* Fixed full-screen dot grid background */}
-      <div className="pointer-events-none fixed inset-0 z-0 h-screen w-screen">
-        <DotGrid />
-      </div>
-      <div className="relative z-10 container mx-auto px-4">
-        {/* Hero Section */}
-        <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden py-20 text-center">
+      <div className="container mx-auto px-6">
+        {/* Hero */}
+        <section className="flex min-h-[calc(100vh-4rem)] flex-col justify-center py-20">
+          <p className="eyebrow boot boot-1 mb-5">Offensive security · advisory ledger</p>
+          <h1 className="boot boot-1 font-display text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            Aarav Vishnoi
+          </h1>
+          <div className="divider-animate mt-5 h-1 w-24 bg-primary" />
 
-          {/* Scan line */}
-          <div className="scan-line pointer-events-none absolute left-0 right-0 h-[2px] bg-accent/10" />
+          <p className="boot boot-2 mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            I&apos;m learning offensive security in the open. This is a working record of
+            the web exploitation I&apos;ve pulled apart — each one written up like a
+            finding, with the steps that got me there.
+          </p>
 
-          <div className="relative z-10">
-            <div className="mb-8 inline-block">
-              <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
-                <span className="text-foreground">Aarav Vishnoi</span>
-              </h1>
-              <div className="divider-animate h-1 bg-accent"></div>
-            </div>
+          <p className="boot boot-3 mt-6 font-mono text-sm text-dim">
+            <span className="text-primary">aarav@sec</span>:~$ status{" "}
+            <span className="text-foreground">7 findings logged · learning API exploitation</span>
+            <span className="caret">&nbsp;</span>
+          </p>
 
-            <p className="mb-6 text-xl text-muted-foreground sm:text-2xl">
-              <TypewriterText
-                text="Offensive Security | Red Teaming | Web & API Exploitation"
-                speed={35}
-                delay={800}
-              />
-            </p>
-
-            <p className="mb-10 max-w-2xl text-lg text-muted-foreground">
-              Breaking assumptions. Exposing weaknesses. Building resilience.
-              <span className="ml-1 inline-block animate-pulse text-accent">▌</span>
-            </p>
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button asChild size="lg" className="group">
-                <Link to="/writeups">
-                  View Writeups
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a
-                  href="https://github.com/aaravvishnoi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub
+          <div className="boot boot-3 mt-10 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg" className="group">
+              <Link to="/writeups">
+                View findings
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+            {profiles.map((p) => (
+              <Button key={p.label} asChild size="lg" variant="outline">
+                <a href={p.href} target="_blank" rel="noopener noreferrer">
+                  <p.icon className="mr-2 h-4 w-4" />
+                  {p.label}
                 </a>
               </Button>
-            </div>
-
-            {/* Stat badges */}
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {statBadges.map((badge) => (
-                <span
-                  key={badge}
-                  className="rounded-full border border-accent/20 bg-accent/5 px-3.5 py-1.5 font-mono text-[13px] text-muted-foreground"
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
+            ))}
           </div>
         </section>
 
-        {/* Red divider */}
-        <div className="mx-auto my-0 h-px w-full max-w-4xl bg-accent/20" />
-
-        {/* Recent Activity Cards */}
-        <section className="py-12">
-          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-3">
-            {activityCards.map((card) => (
-              <div
-                key={card.label}
-                className="rounded border border-border bg-card p-4 border-l-2 border-l-accent"
+        {/* Recent ledger entries */}
+        <section className="border-t border-border py-16">
+          <div className="mb-8 flex items-baseline justify-between">
+            <h2 className="font-display text-2xl font-semibold">Recent findings</h2>
+            <Link to="/writeups" className="font-mono text-xs uppercase tracking-wider text-primary hover:underline">
+              All findings →
+            </Link>
+          </div>
+          <div className="divide-y divide-border rounded-lg border border-border bg-card">
+            {ledger.map((row) => (
+              <Link
+                key={row.id}
+                to="/writeups"
+                className="flex flex-col gap-2 p-5 transition-colors hover:bg-secondary/40 sm:flex-row sm:items-center sm:gap-5"
               >
-                <p className="mb-1 font-mono text-xs uppercase tracking-wider text-accent">
-                  {card.label}
-                </p>
-                <p className="font-mono text-sm text-muted-foreground">
-                  {card.value}
-                </p>
+                <span className="font-mono text-xs text-dim">{row.id}</span>
+                <span className={`sev sev-${row.sev}`}>{row.sev}</span>
+                <span className="flex-1 text-sm text-foreground">{row.title}</span>
+                <span className="font-mono text-xs text-dim">{row.date}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Capabilities — scoped honestly to what's evidenced */}
+        <section className="border-t border-border py-16">
+          <h2 className="mb-10 font-display text-2xl font-semibold">What I work on</h2>
+          <div className="grid gap-5 md:grid-cols-3">
+            {capabilities.map((c) => (
+              <div key={c.k} className="rounded-lg border border-border bg-card p-6">
+                <h3 className="mb-3 font-display text-lg font-semibold text-primary">{c.k}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{c.v}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Skills Overview */}
-        <section className="py-20">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-12 text-center text-3xl font-bold">Core Capabilities</h2>
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="rounded-lg border border-operator-border bg-card p-6">
-                <h3 className="mb-3 text-xl font-semibold text-accent">
-                  Web Exploitation
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Advanced web application testing including authentication bypasses, authorization
-                  flaws, and business logic vulnerabilities.
-                </p>
-              </div>
-              <div className="rounded-lg border border-operator-border bg-card p-6">
-                <h3 className="mb-3 text-xl font-semibold text-accent">API Security</h3>
-                <p className="text-sm text-muted-foreground">
-                  Comprehensive API testing covering REST and GraphQL with focus on broken
-                  authorization and mass assignment attacks.
-                </p>
-              </div>
-              <div className="rounded-lg border border-operator-border bg-card p-6">
-                <h3 className="mb-3 text-xl font-semibold text-accent">
-                  Privilege Escalation
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Post-exploitation techniques for Windows and Linux, including misconfigurations
-                  and kernel exploits.
-                </p>
-              </div>
+        {/* CTA */}
+        <section className="border-t border-border py-16 pb-24">
+          <div className="rounded-lg border border-primary/25 bg-primary/[0.04] p-8 sm:p-10">
+            <h2 className="font-display text-2xl font-bold">Open to security work</h2>
+            <p className="mt-3 max-w-xl text-muted-foreground">
+              Looking for internships, junior pentest roles, or collaboration on
+              vulnerability research. The fastest way to reach me is email.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/contact">Get in touch</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href="https://github.com/aaravvishnoi" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                  <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                </a>
+              </Button>
             </div>
           </div>
         </section>
-
-        {/* Call to Action */}
-        <section className="pb-20">
-          <div className="mx-auto max-w-3xl rounded-lg border border-accent/20 bg-accent/5 p-8 text-center">
-            <h2 className="mb-4 text-2xl font-bold">Ready to Collaborate?</h2>
-            <p className="mb-6 text-muted-foreground">
-              Looking for offensive security expertise, red team assessments, or vulnerability
-              research collaboration.
-            </p>
-            <Button asChild size="lg">
-              <Link to="/contact">Get In Touch</Link>
-            </Button>
-          </div>
-        </section>
-
       </div>
     </Layout>
   );
