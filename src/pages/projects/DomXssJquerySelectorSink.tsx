@@ -9,7 +9,7 @@ const DomXssJquerySelectorSink = () => {
 
   return (
     <Layout>
-      <article className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-3xl px-6 py-20">
         <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -65,7 +65,7 @@ const DomXssJquerySelectorSink = () => {
           {/* Affected Component */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Eye className="h-6 w-6 text-accent" />
+              <Eye className="h-6 w-6 text-[hsl(var(--brand))]" />
               Affected Component
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -99,7 +99,7 @@ const DomXssJquerySelectorSink = () => {
           {/* Root Cause Analysis */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Code className="h-6 w-6 text-accent" />
+              <Code className="h-6 w-6 text-[hsl(var(--brand))]" />
               Root Cause Analysis
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -115,7 +115,7 @@ const DomXssJquerySelectorSink = () => {
           {/* Steps to Reproduce */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Terminal className="h-6 w-6 text-accent" />
+              <Terminal className="h-6 w-6 text-[hsl(var(--brand))]" />
               Steps to Reproduce
             </h2>
             
@@ -149,15 +149,15 @@ const DomXssJquerySelectorSink = () => {
                 <h3 className="mb-4 text-lg font-semibold">Step 3 — Observe the Injection</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-start gap-2">
-                    <span className="text-accent">•</span>
+                    <span className="text-[hsl(var(--brand))]">•</span>
                     The page processes the input through <code className="bg-muted px-1 rounded">location.hash</code> and passes it without sanitization to a jQuery selector.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent">•</span>
+                    <span className="text-[hsl(var(--brand))]">•</span>
                     jQuery treats the supplied value as an HTML snippet, resulting in injected DOM elements.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent">•</span>
+                    <span className="text-[hsl(var(--brand))]">•</span>
                     The injected content renders a copy of the page and triggers JavaScript execution (e.g., the browser print dialog), demonstrating attacker-controlled DOM manipulation.
                   </li>
                 </ul>
@@ -168,7 +168,7 @@ const DomXssJquerySelectorSink = () => {
           {/* Proof of Exploitation */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Zap className="h-6 w-6 text-accent" />
+              <Zap className="h-6 w-6 text-[hsl(var(--brand))]" />
               Proof of Exploitation
             </h2>
             <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-6">
@@ -184,7 +184,7 @@ const DomXssJquerySelectorSink = () => {
           {/* Attack Scenario */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Shield className="h-6 w-6 text-accent" />
+              <Shield className="h-6 w-6 text-[hsl(var(--brand))]" />
               Attack Scenario
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -200,23 +200,23 @@ const DomXssJquerySelectorSink = () => {
             <div className="rounded-lg border border-border bg-card p-6">
               <ol className="space-y-4">
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">1. Avoid using user-controlled input inside jQuery selectors</strong>
+                  <strong className="text-[hsl(var(--brand))]">1. Avoid using user-controlled input inside jQuery selectors</strong>
                   <span className="text-sm text-muted-foreground">Never pass untrusted data into selector-based APIs.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">2. Do not pass untrusted data into :contains()</strong>
+                  <strong className="text-[hsl(var(--brand))]">2. Do not pass untrusted data into :contains()</strong>
                   <span className="text-sm text-muted-foreground">The :contains() pseudo-selector can interpret input as HTML.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">3. Treat hash values as untrusted input</strong>
+                  <strong className="text-[hsl(var(--brand))]">3. Treat hash values as untrusted input</strong>
                   <span className="text-sm text-muted-foreground">Apply strict validation and sanitization to all URL fragment data.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">4. Use safer DOM APIs</strong>
+                  <strong className="text-[hsl(var(--brand))]">4. Use safer DOM APIs</strong>
                   <span className="text-sm text-muted-foreground">Where possible, use DOM APIs that do not interpret input as HTML.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">5. Refactor logic</strong>
+                  <strong className="text-[hsl(var(--brand))]">5. Refactor logic</strong>
                   <span className="text-sm text-muted-foreground">Compare text values without dynamic selector construction.</span>
                 </li>
               </ol>
@@ -226,7 +226,7 @@ const DomXssJquerySelectorSink = () => {
           {/* Conclusion */}
           <section>
             <h2 className="mb-4 text-2xl font-bold">Conclusion</h2>
-            <div className="rounded-lg border border-accent/30 bg-accent/5 p-6">
+            <div className="rounded-lg border border-border bg-secondary p-6">
               <p className="leading-relaxed">
                 The vulnerability arises from unsafe use of attacker-controlled input within a jQuery selector, leading to unintended DOM creation and potential JavaScript execution. Proper input handling and safer DOM manipulation practices are required to prevent exploitation.
               </p>

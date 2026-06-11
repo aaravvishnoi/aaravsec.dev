@@ -9,7 +9,7 @@ const SqlInjectionOracleVersion = () => {
 
   return (
     <Layout>
-      <article className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-3xl px-6 py-20">
         <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -36,7 +36,7 @@ const SqlInjectionOracleVersion = () => {
         <div className="space-y-12">
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Shield className="h-6 w-6 text-accent" />
+              <Shield className="h-6 w-6 text-[hsl(var(--brand))]" />
               Overview
             </h2>
             <div className="rounded-lg border border-operator-border bg-operator-surface p-6">
@@ -98,34 +98,34 @@ const SqlInjectionOracleVersion = () => {
             <div className="rounded-lg border border-operator-border bg-operator-surface p-6">
               <ol className="space-y-3 text-foreground">
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">1.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">1.</span>
                   <span>
                     Navigate to the home page and intercept the category request using Burp Suite
                     (optional, but recommended for clarity).
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">2.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">2.</span>
                   <span>
                     Click on any product category — this triggers the vulnerable query.
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">3.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">3.</span>
                   <span>
                     Modify the category parameter by adding a UNION-based SQL injection payload that
                     queries Oracle's v$version view.
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">4.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">4.</span>
                   <span>
                     Send the request. The backend concatenates the attacker-controlled query to the
                     legitimate one.
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">5.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">5.</span>
                   <span>
                     The response page displays the output of BANNER from v$version, revealing Oracle
                     database version and patch information.
@@ -137,7 +137,7 @@ const SqlInjectionOracleVersion = () => {
 
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Terminal className="h-6 w-6 text-accent" />
+              <Terminal className="h-6 w-6 text-[hsl(var(--brand))]" />
               Payload Used
             </h2>
             <div className="rounded-lg border border-operator-border bg-black p-6">
@@ -151,7 +151,7 @@ const SqlInjectionOracleVersion = () => {
 
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <AlertTriangle className="h-6 w-6 text-accent" />
+              <AlertTriangle className="h-6 w-6 text-[hsl(var(--brand))]" />
               Impact
             </h2>
             <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-6">
@@ -160,25 +160,25 @@ const SqlInjectionOracleVersion = () => {
               </p>
               <ul className="space-y-3 text-foreground">
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Identify exact database version, edition, and patch level</strong>
+                  <strong className="text-[hsl(var(--brand))]">Identify exact database version, edition, and patch level</strong>
                   <span className="text-sm text-muted-foreground">
                     Complete visibility into the database infrastructure and its security posture.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Map known Oracle vulnerabilities</strong>
+                  <strong className="text-[hsl(var(--brand))]">Map known Oracle vulnerabilities</strong>
                   <span className="text-sm text-muted-foreground">
                     CVE mapping becomes trivial, allowing attackers to identify applicable exploits immediately.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Plan targeted exploitation</strong>
+                  <strong className="text-[hsl(var(--brand))]">Plan targeted exploitation</strong>
                   <span className="text-sm text-muted-foreground">
                     Develop payloads for privilege escalation, RCE, or lateral movement based on version-specific exploits.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Chain attacks with existing SQL injection</strong>
+                  <strong className="text-[hsl(var(--brand))]">Chain attacks with existing SQL injection</strong>
                   <span className="text-sm text-muted-foreground">
                     Extract sensitive data, enumerate database structure, and escalate privileges using known techniques.
                   </span>
@@ -192,37 +192,37 @@ const SqlInjectionOracleVersion = () => {
 
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Database className="h-6 w-6 text-accent" />
+              <Database className="h-6 w-6 text-[hsl(var(--brand))]" />
               Remediation
             </h2>
             <div className="rounded-lg border border-operator-border bg-operator-surface p-6">
               <ol className="space-y-4 text-foreground">
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">1. Use prepared statements (parameterized queries)</strong>
+                  <strong className="text-[hsl(var(--brand))]">1. Use prepared statements (parameterized queries)</strong>
                   <span className="text-sm text-muted-foreground">
                     Prevent SQL injection by ensuring user input is never directly concatenated into queries.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">2. Enforce strict input validation</strong>
+                  <strong className="text-[hsl(var(--brand))]">2. Enforce strict input validation</strong>
                   <span className="text-sm text-muted-foreground">
                     Reject or sanitize unexpected characters such as ', ", ;, --, etc.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">3. Disable database error leakage</strong>
+                  <strong className="text-[hsl(var(--brand))]">3. Disable database error leakage</strong>
                   <span className="text-sm text-muted-foreground">
                     Do not expose stack traces or database messages in UI responses.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">4. Use least-privilege DB accounts</strong>
+                  <strong className="text-[hsl(var(--brand))]">4. Use least-privilege DB accounts</strong>
                   <span className="text-sm text-muted-foreground">
                     The application user should not have permissions to read v$version or other system tables.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">5. Implement Web Application Firewall (WAF) rules</strong>
+                  <strong className="text-[hsl(var(--brand))]">5. Implement Web Application Firewall (WAF) rules</strong>
                   <span className="text-sm text-muted-foreground">
                     Detect and block UNION-based injection, comment sequences, and known SQLi patterns.
                   </span>

@@ -9,7 +9,7 @@ const DomXssAngularJsExpression = () => {
 
   return (
     <Layout>
-      <article className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-3xl px-6 py-20">
         <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -65,7 +65,7 @@ const DomXssAngularJsExpression = () => {
           {/* Affected Component */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Eye className="h-6 w-6 text-accent" />
+              <Eye className="h-6 w-6 text-[hsl(var(--brand))]" />
               Affected Component
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -97,7 +97,7 @@ const DomXssAngularJsExpression = () => {
           {/* Root Cause Analysis */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Code className="h-6 w-6 text-accent" />
+              <Code className="h-6 w-6 text-[hsl(var(--brand))]" />
               Root Cause Analysis
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -113,7 +113,7 @@ const DomXssAngularJsExpression = () => {
           {/* Steps to Reproduce */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Terminal className="h-6 w-6 text-accent" />
+              <Terminal className="h-6 w-6 text-[hsl(var(--brand))]" />
               Steps to Reproduce
             </h2>
             
@@ -155,7 +155,7 @@ const DomXssAngularJsExpression = () => {
           {/* Proof of Exploitation */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Zap className="h-6 w-6 text-accent" />
+              <Zap className="h-6 w-6 text-[hsl(var(--brand))]" />
               Proof of Exploitation
             </h2>
             <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-6">
@@ -174,7 +174,7 @@ const DomXssAngularJsExpression = () => {
           {/* Attack Scenario */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Shield className="h-6 w-6 text-accent" />
+              <Shield className="h-6 w-6 text-[hsl(var(--brand))]" />
               Attack Scenario
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -190,23 +190,23 @@ const DomXssAngularJsExpression = () => {
             <div className="rounded-lg border border-border bg-card p-6">
               <ol className="space-y-4">
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">1. Avoid rendering user input within AngularJS templates</strong>
+                  <strong className="text-[hsl(var(--brand))]">1. Avoid rendering user input within AngularJS templates</strong>
                   <span className="text-sm text-muted-foreground">Never bind untrusted data directly into AngularJS expressions.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">2. Use ng-bind instead of interpolation</strong>
+                  <strong className="text-[hsl(var(--brand))]">2. Use ng-bind instead of interpolation</strong>
                   <span className="text-sm text-muted-foreground">The ng-bind directive is safer than double curly brace interpolation for displaying user input.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">3. Implement strict Content Security Policy (CSP)</strong>
+                  <strong className="text-[hsl(var(--brand))]">3. Implement strict Content Security Policy (CSP)</strong>
                   <span className="text-sm text-muted-foreground">A properly configured CSP can prevent inline script execution even if XSS occurs.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">4. Sanitize user input server-side</strong>
+                  <strong className="text-[hsl(var(--brand))]">4. Sanitize user input server-side</strong>
                   <span className="text-sm text-muted-foreground">Apply strict validation and encoding before reflecting user input in responses.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">5. Consider migrating from AngularJS</strong>
+                  <strong className="text-[hsl(var(--brand))]">5. Consider migrating from AngularJS</strong>
                   <span className="text-sm text-muted-foreground">AngularJS is end-of-life; migrate to modern frameworks with better security defaults.</span>
                 </li>
               </ol>
@@ -216,7 +216,7 @@ const DomXssAngularJsExpression = () => {
           {/* Conclusion */}
           <section>
             <h2 className="mb-4 text-2xl font-bold">Conclusion</h2>
-            <div className="rounded-lg border border-accent/30 bg-accent/5 p-6">
+            <div className="rounded-lg border border-border bg-secondary p-6">
               <p className="leading-relaxed">
                 The vulnerability arises from unsafe rendering of user-controlled input within AngularJS templates, enabling expression injection and subsequent JavaScript execution. Proper input handling, secure binding practices, and Content Security Policy implementation are required to prevent exploitation.
               </p>

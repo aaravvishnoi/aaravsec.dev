@@ -9,7 +9,7 @@ const ReflectedDomXss = () => {
 
   return (
     <Layout>
-      <article className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-3xl px-6 py-20">
         <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -69,7 +69,7 @@ const ReflectedDomXss = () => {
           {/* Affected Component */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Eye className="h-6 w-6 text-accent" />
+              <Eye className="h-6 w-6 text-[hsl(var(--brand))]" />
               Affected Component
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -103,7 +103,7 @@ const ReflectedDomXss = () => {
           {/* Root Cause Analysis */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Code className="h-6 w-6 text-accent" />
+              <Code className="h-6 w-6 text-[hsl(var(--brand))]" />
               Root Cause Analysis
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -119,7 +119,7 @@ const ReflectedDomXss = () => {
           {/* Steps to Reproduce */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Terminal className="h-6 w-6 text-accent" />
+              <Terminal className="h-6 w-6 text-[hsl(var(--brand))]" />
               Steps to Reproduce
             </h2>
             
@@ -161,7 +161,7 @@ const ReflectedDomXss = () => {
           {/* Proof of Exploitation */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Zap className="h-6 w-6 text-accent" />
+              <Zap className="h-6 w-6 text-[hsl(var(--brand))]" />
               Proof of Exploitation
             </h2>
             <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-6">
@@ -180,7 +180,7 @@ const ReflectedDomXss = () => {
           {/* Attack Scenario */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Shield className="h-6 w-6 text-accent" />
+              <Shield className="h-6 w-6 text-[hsl(var(--brand))]" />
               Attack Scenario
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -196,23 +196,23 @@ const ReflectedDomXss = () => {
             <div className="rounded-lg border border-border bg-card p-6">
               <ol className="space-y-4">
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">1. Never use eval() with untrusted data</strong>
+                  <strong className="text-[hsl(var(--brand))]">1. Never use eval() with untrusted data</strong>
                   <span className="text-sm text-muted-foreground">Replace eval() with JSON.parse() for parsing JSON responses.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">2. Use JSON.parse() for data parsing</strong>
+                  <strong className="text-[hsl(var(--brand))]">2. Use JSON.parse() for data parsing</strong>
                   <span className="text-sm text-muted-foreground">JSON.parse() treats input as data, not executable code, preventing code injection.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">3. Validate server responses</strong>
+                  <strong className="text-[hsl(var(--brand))]">3. Validate server responses</strong>
                   <span className="text-sm text-muted-foreground">Ensure responses conform to expected structure before processing.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">4. Implement Content Security Policy (CSP)</strong>
+                  <strong className="text-[hsl(var(--brand))]">4. Implement Content Security Policy (CSP)</strong>
                   <span className="text-sm text-muted-foreground">A strict CSP can prevent inline script execution and mitigate XSS impact.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">5. Encode output appropriately</strong>
+                  <strong className="text-[hsl(var(--brand))]">5. Encode output appropriately</strong>
                   <span className="text-sm text-muted-foreground">Server-side encoding alone is insufficient; avoid dangerous sinks entirely.</span>
                 </li>
               </ol>
@@ -222,7 +222,7 @@ const ReflectedDomXss = () => {
           {/* Conclusion */}
           <section>
             <h2 className="mb-4 text-2xl font-bold">Conclusion</h2>
-            <div className="rounded-lg border border-accent/30 bg-accent/5 p-6">
+            <div className="rounded-lg border border-border bg-secondary p-6">
               <p className="leading-relaxed">
                 This reflected DOM XSS vulnerability demonstrates the critical danger of using eval() to process server responses containing user-influenced data. The combination of server-side reflection and client-side eval() creates a powerful attack vector. Remediation requires replacing eval() with safe parsing methods like JSON.parse() and implementing defense-in-depth through CSP.
               </p>

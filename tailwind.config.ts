@@ -63,10 +63,14 @@ export default {
           info: "hsl(var(--sev-info))",
         },
         dim: "hsl(var(--dim))",
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          foreground: "hsl(var(--brand-foreground))",
+        },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "Inter", "sans-serif"],
+        display: ["Inter Tight", "Inter", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       borderRadius: {

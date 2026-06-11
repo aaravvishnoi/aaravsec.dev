@@ -9,7 +9,7 @@ const BlindSqlInjectionBoolean = () => {
 
   return (
     <Layout>
-      <article className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-3xl px-6 py-20">
         <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -38,7 +38,7 @@ const BlindSqlInjectionBoolean = () => {
           {/* Context Section */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Shield className="h-6 w-6 text-accent" />
+              <Shield className="h-6 w-6 text-[hsl(var(--brand))]" />
               Context
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
@@ -69,11 +69,11 @@ const BlindSqlInjectionBoolean = () => {
           {/* Vulnerability Type */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Eye className="h-6 w-6 text-accent" />
+              <Eye className="h-6 w-6 text-[hsl(var(--brand))]" />
               Vulnerability Type
             </h2>
             <div className="rounded-lg border border-border bg-card p-6">
-              <p className="text-lg font-semibold text-accent">Blind SQL Injection (Boolean-Based)</p>
+              <p className="text-lg font-semibold text-[hsl(var(--brand))]">Blind SQL Injection (Boolean-Based)</p>
               <p className="mt-2 text-muted-foreground">
                 Behavioral inference through conditional evaluation — data extracted by observing differences in application responses.
               </p>
@@ -94,8 +94,8 @@ const BlindSqlInjectionBoolean = () => {
                 When intercepted via Burp Suite and modified, the response body changed depending on injected SQL logic — 
                 specifically the presence or absence of the <strong>"Welcome back"</strong> message.
               </p>
-              <div className="rounded border border-accent/30 bg-accent/5 p-4">
-                <p className="font-medium text-accent">This indicated that:</p>
+              <div className="rounded border border-border bg-secondary p-4">
+                <p className="font-medium text-[hsl(var(--brand))]">This indicated that:</p>
                 <ul className="mt-2 ml-4 space-y-1 text-muted-foreground">
                   <li className="list-disc">The cookie value was concatenated into a SQL query</li>
                   <li className="list-disc">The server's output varied based on boolean results</li>
@@ -110,7 +110,7 @@ const BlindSqlInjectionBoolean = () => {
           {/* Proof of Concept */}
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Terminal className="h-6 w-6 text-accent" />
+              <Terminal className="h-6 w-6 text-[hsl(var(--brand))]" />
               Proof of Concept
             </h2>
             
@@ -136,7 +136,7 @@ const BlindSqlInjectionBoolean = () => {
                     </p>
                   </div>
                 </div>
-                <p className="mt-4 text-sm text-accent font-medium">
+                <p className="mt-4 text-sm text-[hsl(var(--brand))] font-medium">
                   This confirmed exploitable boolean-based blind SQLi.
                 </p>
               </div>
@@ -144,7 +144,7 @@ const BlindSqlInjectionBoolean = () => {
               {/* Step 1 */}
               <div className="rounded-lg border border-border bg-card p-6">
                 <h3 className="mb-4 text-lg font-semibold flex items-center gap-2">
-                  <Database className="h-5 w-5 text-accent" />
+                  <Database className="h-5 w-5 text-[hsl(var(--brand))]" />
                   Step 1 — Check for Users Table
                 </h3>
                 <div className="rounded border border-border bg-black p-4">
@@ -175,18 +175,18 @@ const BlindSqlInjectionBoolean = () => {
                   <code className="block font-mono text-sm text-foreground">TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)&gt;2)='a</code>
                   <code className="block font-mono text-sm text-muted-foreground">...</code>
                 </div>
-                <div className="mt-4 rounded border border-accent/30 bg-accent/5 p-4">
+                <div className="mt-4 rounded border border-border bg-secondary p-4">
                   <p className="text-sm">
                     <strong>Finding:</strong> Conditional tests returned TRUE until <code className="bg-muted px-1 rounded">LENGTH(password)&gt;19</code>, and FALSE after that.
                   </p>
-                  <p className="mt-2 font-medium text-accent">➡️ Password length = 20 characters</p>
+                  <p className="mt-2 font-medium text-[hsl(var(--brand))]">➡️ Password length = 20 characters</p>
                 </div>
               </div>
 
               {/* Step 4 */}
               <div className="rounded-lg border border-border bg-card p-6">
                 <h3 className="mb-4 text-lg font-semibold flex items-center gap-2">
-                  <Key className="h-5 w-5 text-accent" />
+                  <Key className="h-5 w-5 text-[hsl(var(--brand))]" />
                   Step 4 — Extract Password Character-by-Character
                 </h3>
                 <p className="mb-4 text-muted-foreground">Used Burp Intruder with payload positions marked:</p>
@@ -217,7 +217,7 @@ const BlindSqlInjectionBoolean = () => {
                   <code className="block font-mono text-sm text-foreground">SUBSTRING(password,3,1)</code>
                   <code className="block font-mono text-sm text-muted-foreground">...</code>
                 </div>
-                <p className="mt-4 font-medium text-accent">➡️ Assembled full admin password.</p>
+                <p className="mt-4 font-medium text-[hsl(var(--brand))]">➡️ Assembled full admin password.</p>
               </div>
 
               {/* Step 5 */}
@@ -307,23 +307,23 @@ const BlindSqlInjectionBoolean = () => {
             <div className="rounded-lg border border-border bg-card p-6">
               <ol className="space-y-4">
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">1. Enforce parameterized SQL queries</strong>
+                  <strong className="text-[hsl(var(--brand))]">1. Enforce parameterized SQL queries</strong>
                   <span className="text-sm text-muted-foreground">Use prepared statements with bind parameters for all database operations.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">2. Remove direct concatenation</strong>
+                  <strong className="text-[hsl(var(--brand))]">2. Remove direct concatenation</strong>
                   <span className="text-sm text-muted-foreground">Never concatenate user-controlled values into SQL queries.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">3. Normalize application flow</strong>
+                  <strong className="text-[hsl(var(--brand))]">3. Normalize application flow</strong>
                   <span className="text-sm text-muted-foreground">Same UI response for all outcomes — avoid leaking boolean conditions.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">4. Implement rate limiting</strong>
+                  <strong className="text-[hsl(var(--brand))]">4. Implement rate limiting</strong>
                   <span className="text-sm text-muted-foreground">Detect and throttle anomalous patterns on session tokens.</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">5. Hash and salt credentials</strong>
+                  <strong className="text-[hsl(var(--brand))]">5. Hash and salt credentials</strong>
                   <span className="text-sm text-muted-foreground">Ensure stored passwords are properly hashed with strong algorithms.</span>
                 </li>
               </ol>

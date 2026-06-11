@@ -16,7 +16,7 @@ const Notes = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-16">
+      <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="mb-12">
           <p className="eyebrow mb-3">Methodology</p>
           <h1 className="mb-4 font-display text-4xl font-bold tracking-tight">Notes</h1>
@@ -31,7 +31,7 @@ const Notes = () => {
             value="burp-methodology"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               Burp Suite Methodology
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">
@@ -59,7 +59,7 @@ const Notes = () => {
             value="recon-checklist"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               Recon Checklist
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">
@@ -86,7 +86,7 @@ const Notes = () => {
             value="web-attacks"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               Web Attack Cheat Sheet
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">
@@ -117,7 +117,7 @@ const Notes = () => {
             value="api-testing"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               API Testing Methodology
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">
@@ -147,7 +147,7 @@ const Notes = () => {
             value="linux-privesc"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               Linux Privesc Techniques
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">
@@ -179,7 +179,7 @@ const Notes = () => {
             value="windows-privesc"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               Windows Privesc Techniques
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">
@@ -211,7 +211,7 @@ const Notes = () => {
             value="payloads"
             className="rounded-lg border border-operator-border bg-card px-6"
           >
-            <AccordionTrigger className="text-lg font-semibold hover:text-accent">
+            <AccordionTrigger className="text-lg font-semibold hover:text-[hsl(var(--brand))]">
               Payloads & Scripts
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pt-4 text-muted-foreground">

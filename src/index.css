@@ -3,61 +3,62 @@
 @tailwind utilities;
 
 /* ============================================================
-   AARAVSEC — "Advisory Ledger" design system
-   The credible artifact of offensive security is the written
-   finding. Type + color encode a real severity taxonomy.
-   Brand = amber phosphor; red is reserved for Critical only.
+   AARAVSEC — minimal / sleek
+   Near-monochrome light system. One restrained accent.
+   Monospace is reserved for technical metadata only.
    ============================================================ */
 
 @layer base {
   :root {
-    /* --- core surfaces (deep blue-black, not pure black) --- */
-    --background: 222 30% 6%;          /* #0A0C12 ink */
-    --foreground: 220 16% 92%;         /* #E7E9EE high-contrast text */
+    /* surfaces — warm-neutral paper, not pure white */
+    --background: 40 14% 98%;          /* #FAFAF8 */
+    --foreground: 240 6% 10%;          /* #18181B ink */
 
-    --card: 222 24% 9%;                /* #12151E panel */
-    --card-foreground: 220 16% 92%;
+    --card: 0 0% 100%;                 /* #FFFFFF */
+    --card-foreground: 240 6% 10%;
 
-    --popover: 222 24% 9%;
-    --popover-foreground: 220 16% 92%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
 
-    /* --- brand: amber phosphor --- */
-    --primary: 36 81% 57%;             /* #E9A23B */
-    --primary-foreground: 222 30% 6%;
+    /* primary action = ink (black buttons read sleek) */
+    --primary: 240 6% 10%;
+    --primary-foreground: 40 14% 98%;
 
-    --secondary: 222 20% 14%;          /* #1A1E2A elevated */
-    --secondary-foreground: 220 16% 92%;
+    /* shadcn neutral hover/fill */
+    --secondary: 40 9% 96%;            /* #F4F3F1 */
+    --secondary-foreground: 240 6% 10%;
 
-    --muted: 222 18% 16%;
-    --muted-foreground: 218 13% 65%;   /* #98A1B2 — lifted for contrast */
+    --muted: 40 9% 96%;
+    --muted-foreground: 240 4% 46%;    /* #71717A */
 
-    --accent: 36 81% 57%;              /* amber */
-    --accent-foreground: 222 30% 6%;
+    --accent: 40 9% 96%;               /* neutral hover (shadcn-correct) */
+    --accent-foreground: 240 6% 10%;
 
-    --destructive: 357 84% 64%;        /* critical red */
-    --destructive-foreground: 220 16% 96%;
+    --destructive: 358 70% 53%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 222 19% 19%;             /* #262C3A line */
-    --input: 222 19% 19%;
-    --ring: 36 81% 57%;
+    --border: 40 8% 90%;               /* #E7E5E1 hairline */
+    --input: 40 8% 90%;
+    --ring: 232 64% 52%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    /* --- operator tokens (kept so existing pages re-theme) --- */
-    --operator-bg: 222 30% 6%;
-    --operator-surface: 222 24% 9%;
-    --operator-border: 222 19% 19%;
-    --operator-text: 220 16% 92%;
-    --operator-text-muted: 218 13% 65%;
-    --operator-accent: 36 81% 57%;
-    --operator-accent-hover: 36 86% 64%;
+    /* the single brand accent — used sparingly (links, active, marks) */
+    --brand: 232 64% 52%;              /* #2E45D6 refined cobalt */
+    --brand-foreground: 0 0% 100%;
 
-    /* --- severity taxonomy (a real information axis) --- */
-    --sev-critical: 357 84% 64%;       /* #F2555A */
-    --sev-high: 27 86% 59%;            /* #F0883E */
-    --sev-medium: 46 78% 60%;          /* #E8C24A */
-    --sev-info: 207 73% 63%;           /* #5AA9E6 — cool secondary */
-    --dim: 220 12% 45%;                /* #646E80 labels */
+    /* quiet severity: only Critical carries colour */
+    --sev-critical: 358 70% 53%;
+    --dim: 240 4% 58%;                 /* #8E8E96 metadata */
+
+    /* operator-* kept so the 7 detail pages re-theme automatically */
+    --operator-bg: 40 14% 98%;
+    --operator-surface: 0 0% 100%;
+    --operator-border: 40 8% 90%;
+    --operator-text: 240 6% 10%;
+    --operator-text-muted: 240 4% 46%;
+    --operator-accent: 232 64% 52%;
+    --operator-accent-hover: 232 64% 46%;
   }
 }
 
@@ -68,115 +69,82 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-feature-settings: "cv05", "ss01";
-    /* faint grid: the ambient texture, drawn in CSS not JS */
-    background-image:
-      linear-gradient(hsl(var(--border) / 0.25) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.25) 1px, transparent 1px);
-    background-size: 32px 32px;
-    background-position: -1px -1px;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
-    @apply tracking-tight;
+    font-family: 'Inter Tight', 'Inter', sans-serif;
+    @apply tracking-[-0.02em];
   }
 
   code, kbd, pre, .font-mono {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
   }
 
-  /* Visible keyboard focus everywhere */
   :focus-visible {
-    outline: 2px solid hsl(var(--accent));
+    outline: 2px solid hsl(var(--brand));
     outline-offset: 2px;
-    border-radius: 2px;
+    border-radius: 3px;
   }
 
   ::selection {
-    background: hsl(var(--accent) / 0.3);
-    color: hsl(var(--foreground));
+    background: hsl(var(--brand) / 0.16);
   }
 }
 
 @layer components {
-  /* Monospace eyebrow / label */
+  /* monospace metadata label */
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-[hsl(var(--dim))];
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-[hsl(var(--dim))];
   }
 
-  /* Severity chip — color carries meaning */
+  /* technique tag — quiet, monospace */
+  .tag {
+    @apply inline-flex items-center rounded-md border border-border bg-secondary
+           px-2 py-0.5 font-mono text-[11px] text-muted-foreground;
+  }
+
+  /* severity — near-monochrome; only Critical gets colour */
   .sev {
-    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5
-           font-mono text-[11px] font-medium uppercase tracking-wider;
+    @apply inline-flex items-center gap-1.5 font-mono text-[11px] uppercase
+           tracking-wider text-muted-foreground;
   }
   .sev::before {
     content: "";
     @apply h-1.5 w-1.5 rounded-full;
     background: currentColor;
   }
-  .sev-critical { color: hsl(var(--sev-critical)); border-color: hsl(var(--sev-critical) / 0.35); background: hsl(var(--sev-critical) / 0.08); }
-  .sev-high     { color: hsl(var(--sev-high));     border-color: hsl(var(--sev-high) / 0.35);     background: hsl(var(--sev-high) / 0.08); }
-  .sev-medium   { color: hsl(var(--sev-medium));   border-color: hsl(var(--sev-medium) / 0.35);   background: hsl(var(--sev-medium) / 0.08); }
-  .sev-info     { color: hsl(var(--sev-info));     border-color: hsl(var(--sev-info) / 0.35);     background: hsl(var(--sev-info) / 0.08); }
+  .sev-critical { color: hsl(var(--sev-critical)); }
+  .sev-high     { color: hsl(var(--foreground)); }
+  .sev-medium   { color: hsl(var(--muted-foreground)); }
+  .sev-info     { color: hsl(var(--muted-foreground)); }
 
-  /* Neutral technique tag (mono, quiet) */
-  .tag {
-    @apply inline-flex items-center rounded border border-border bg-secondary/60
-           px-2 py-0.5 font-mono text-[11px] text-muted-foreground;
+  /* link underline that animates from the left on hover */
+  .link-brand {
+    @apply relative text-foreground transition-colors hover:text-[hsl(var(--brand))];
   }
 }
 
-/* ---- single, restrained signature animation: boot reveal ---- */
-.boot {
-  opacity: 0;
-  transform: translateY(8px);
-  animation: boot-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.boot-1 { animation-delay: 0.05s; }
-.boot-2 { animation-delay: 0.15s; }
-.boot-3 { animation-delay: 0.28s; }
-.boot-4 { animation-delay: 0.42s; }
+/* one restrained entrance — gentle fade-up, staggered */
+.rise { opacity: 0; transform: translateY(10px); animation: rise 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+.rise-1 { animation-delay: 0.04s; }
+.rise-2 { animation-delay: 0.12s; }
+.rise-3 { animation-delay: 0.22s; }
+.rise-4 { animation-delay: 0.32s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
 
-@keyframes boot-in {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* divider that draws in from the left */
-.divider-animate {
-  animation: divider-grow 0.7s ease-out 0.3s forwards;
-  transform-origin: left;
-  transform: scaleX(0);
-}
-@keyframes divider-grow {
-  to { transform: scaleX(1); }
-}
-
-/* blinking caret used once, in the hero status line */
-.caret {
-  display: inline-block;
-  width: 0.6ch;
-  background: hsl(var(--accent));
-  animation: caret-blink 1.1s steps(1) infinite;
-}
-@keyframes caret-blink {
-  50% { opacity: 0; }
-}
-
-/* Respect reduced-motion: kill all the motion, keep final state */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .boot { opacity: 1; transform: none; }
-  .divider-animate { transform: scaleX(1); }
-  .caret { opacity: 1; }
+  .rise { opacity: 1; transform: none; }
 }

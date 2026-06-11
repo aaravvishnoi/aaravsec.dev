@@ -9,7 +9,7 @@ const SqlInjectionLoginBypass = () => {
 
   return (
     <Layout>
-      <article className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-3xl px-6 py-20">
         <Link to="/writeups">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -34,7 +34,7 @@ const SqlInjectionLoginBypass = () => {
         <div className="space-y-12">
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Shield className="h-6 w-6 text-accent" />
+              <Shield className="h-6 w-6 text-[hsl(var(--brand))]" />
               Overview
             </h2>
             <div className="rounded-lg border border-operator-border bg-operator-surface p-6">
@@ -79,29 +79,29 @@ const SqlInjectionLoginBypass = () => {
             <div className="rounded-lg border border-operator-border bg-operator-surface p-6">
               <ol className="space-y-3 text-foreground">
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">1.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">1.</span>
                   <span>
                     Navigate to the login page and intercept the request using Burp Suite (optional
                     but recommended).
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">2.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">2.</span>
                   <span>Enter any value in the username field (or leave it blank).</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">3.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">3.</span>
                   <span>
                     Inject a malicious payload in the password field designed to alter the SQL query
                     logic.
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">4.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">4.</span>
                   <span>Submit the form.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="font-mono text-accent">5.</span>
+                  <span className="font-mono text-[hsl(var(--brand))]">5.</span>
                   <span>
                     The backend SQL query becomes logically true (1=1) and grants access without
                     verifying valid credentials.
@@ -113,7 +113,7 @@ const SqlInjectionLoginBypass = () => {
 
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <Terminal className="h-6 w-6 text-accent" />
+              <Terminal className="h-6 w-6 text-[hsl(var(--brand))]" />
               Payload Used
             </h2>
             <div className="rounded-lg border border-operator-border bg-black p-6">
@@ -125,7 +125,7 @@ const SqlInjectionLoginBypass = () => {
 
           <section>
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <AlertTriangle className="h-6 w-6 text-accent" />
+              <AlertTriangle className="h-6 w-6 text-[hsl(var(--brand))]" />
               Impact
             </h2>
             <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-6">
@@ -134,32 +134,32 @@ const SqlInjectionLoginBypass = () => {
               </p>
               <ul className="space-y-3 text-foreground">
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Full account takeover</strong>
+                  <strong className="text-[hsl(var(--brand))]">Full account takeover</strong>
                   <span className="text-sm text-muted-foreground">
                     Attackers can log in as any user, including administrators.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Unauthorized access to all restricted pages</strong>
+                  <strong className="text-[hsl(var(--brand))]">Unauthorized access to all restricted pages</strong>
                   <span className="text-sm text-muted-foreground">
                     All user data, admin dashboards, and sensitive operations become accessible.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Compromise of confidential information</strong>
+                  <strong className="text-[hsl(var(--brand))]">Compromise of confidential information</strong>
                   <span className="text-sm text-muted-foreground">
                     Personal data, internal content, and sensitive files are exposed.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Privilege escalation</strong>
+                  <strong className="text-[hsl(var(--brand))]">Privilege escalation</strong>
                   <span className="text-sm text-muted-foreground">
                     If the first user returned by the query is an admin, the attacker immediately
                     gains full system control.
                   </span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <strong className="text-accent">Regulatory and compliance failure</strong>
+                  <strong className="text-[hsl(var(--brand))]">Regulatory and compliance failure</strong>
                   <span className="text-sm text-muted-foreground">
                     Violates OWASP ASVS, PCI-DSS, and general best practices for authentication and
                     input handling.
@@ -177,31 +177,31 @@ const SqlInjectionLoginBypass = () => {
             <div className="rounded-lg border border-operator-border bg-operator-surface p-6">
               <ol className="space-y-4 text-foreground">
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">1. Use parameterized queries (prepared statements)</strong>
+                  <strong className="text-[hsl(var(--brand))]">1. Use parameterized queries (prepared statements)</strong>
                   <span className="text-sm text-muted-foreground">
                     Never concatenate user input directly into SQL queries. Use bind parameters.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">2. Implement strong server-side validation</strong>
+                  <strong className="text-[hsl(var(--brand))]">2. Implement strong server-side validation</strong>
                   <span className="text-sm text-muted-foreground">
                     Reject or sanitize unexpected characters before executing database queries.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">3. Enforce secure password handling</strong>
+                  <strong className="text-[hsl(var(--brand))]">3. Enforce secure password handling</strong>
                   <span className="text-sm text-muted-foreground">
                     Passwords should be hashed and never compared directly in SQL.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">4. Apply least privilege to database accounts</strong>
+                  <strong className="text-[hsl(var(--brand))]">4. Apply least privilege to database accounts</strong>
                   <span className="text-sm text-muted-foreground">
                     The application user should have limited SQL permissions.
                   </span>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <strong className="text-accent">5. Implement WAF signatures / IDS detection</strong>
+                  <strong className="text-[hsl(var(--brand))]">5. Implement WAF signatures / IDS detection</strong>
                   <span className="text-sm text-muted-foreground">
                     As a compensating control.
                   </span>
